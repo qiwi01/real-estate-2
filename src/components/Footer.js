@@ -22,10 +22,10 @@ const Footer = () => {
             <h3>Summit Realty Group</h3>
             <p>Creating visionary spaces that blend innovation, sustainability, and timeless design.</p>
             <div className="social-links">
-              <a href="#" aria-label="Facebook">📘</a>
-              <a href="#" aria-label="Twitter">🐦</a>
-              <a href="#" aria-label="LinkedIn">💼</a>
-              <a href="#" aria-label="Instagram">📷</a>
+              <a href="https://facebook.com/summitrealtygroup" aria-label="Facebook" target="_blank" rel="noopener noreferrer">📘</a>
+              <a href="https://twitter.com/summitrealty" aria-label="Twitter" target="_blank" rel="noopener noreferrer">🐦</a>
+              <a href="https://linkedin.com/company/summit-realty-group" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">💼</a>
+              <a href="https://instagram.com/summitrealtygroup" aria-label="Instagram" target="_blank" rel="noopener noreferrer">📷</a>
             </div>
           </div>
           <div className="footer-section">
