@@ -3,7 +3,7 @@ import App from './App';
 
 test('renders architectural real estate website logo', () => {
   render(<App />);
-  const logoElement = screen.getByRole('heading', { name: /ArchDev Realty/i, level: 1 });
+  const logoElement = screen.getByRole('heading', { name: /Summit Realty Group/i, level: 1 });
   expect(logoElement).toBeInTheDocument();
 });
 

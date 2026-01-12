@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-section">
-            <h3>ArchDev Realty</h3>
+            <h3>Summit Realty Group</h3>
             <p>Creating visionary spaces that blend innovation, sustainability, and timeless design.</p>
             <div className="social-links">
               <a href="#" aria-label="Facebook">📘</a>
@@ -56,7 +56,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2024 ArchDev Realty. All rights reserved.</p>
+          <p>&copy; 2024 Summit Realty Group. All rights reserved.</p>
         </div>
       </div>
     </footer>

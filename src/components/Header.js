@@ -41,7 +41,7 @@ const Header = () => {
     <header className={isScrolled ? 'scrolled' : ''}>
       <nav>
         <div className="container">
-          <h1 className="logo">ArchDev Realty</h1>
+          <h1 className="logo">Summit Realty Group</h1>
           <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
             <li><a href="#home" onClick={(e) => { e.preventDefault(); scrollToSection('home'); }}>Home</a></li>
             <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}>About</a></li>
